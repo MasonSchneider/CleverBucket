@@ -1,11 +1,15 @@
 body {
+	height: 100%;
+	overflow: hidden;
 	/*color: #fff056;	
 	background-color: #191919;*/
 }
 
+/* Ideas */
 .ideaCol {
 	border-right: 1px solid black;
 	height: 100vh;
+	max-height: 100%;
 }
 
 .profileArea {
@@ -18,11 +22,27 @@ body {
 	padding: 10px;
 }
 
+.ideaScrollArea {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	/* TODO: Make the height based on other heights */
+	height: 600px;
+}
+
+.ideaTab {
+	padding-left: 20px;
+	border-bottom: 1px solid black;
+}
+
+/* Features */
 .featureCol {
 	border-right: 1px solid black;
 	height: 100vh;
+	max-height: 100%;
 }
 
+/* Details */
 .detailCol {
 	height: 100vh;
+	max-height: 100%;
 }
