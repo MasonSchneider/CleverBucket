@@ -44,6 +44,10 @@ body {
 .ideaTitle {
 	background-color: grey;
 	text-align: center;
+	height:5%;
+}
+.featureRows{
+	height: 85%;
 }
 .featureScrollArea{
 	overflow-x: hidden;
@@ -53,6 +57,11 @@ body {
 .featureTab{
 	padding-left: 20px;
 	border-bottom: 1px solid black;
+}
+.featureFooter{
+	padding-top: 15px;
+	height: 10%;
+	border-top: 1px solid black;
 }
 
 /* Details */
