@@ -18,6 +18,14 @@ $(document).ready(function() {
 			for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
 				$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
 			}
+			var canvas = document.getElementById('sketchCanvas');
+			canvas.width = canvas.width;
+			var context = canvas.getContext('2d');
+			var imageObj = new Image();
+			imageObj.onload = function() {
+				context.drawImage(this, 0, 0);
+			};
+			imageObj.src = detailCanvas[selectedIdea+'+'+selectedFeature];
 		}
 	}
 });
@@ -44,6 +52,14 @@ $(".ideaTab").click(function() {
 			for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
 				$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
 			}
+			var canvas = document.getElementById('sketchCanvas');
+			canvas.width = canvas.width;
+			var context = canvas.getContext('2d');
+			var imageObj = new Image();
+			imageObj.onload = function() {
+				context.drawImage(this, 0, 0);
+			};
+			imageObj.src = detailCanvas[selectedIdea+'+'+selectedFeature];
 		}
 		$(this).removeClass("hidden");
 	});
@@ -56,6 +72,8 @@ $(".ideaTab").click(function() {
 		for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
 			$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
 		}
+		var canvas = document.getElementById('sketchCanvas');
+		canvas.width = canvas.width;
 	}
 });
 
@@ -70,4 +88,12 @@ $(".featureTab").click(function() {
 	for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
 		$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
 	}
+	var canvas = document.getElementById('sketchCanvas');
+	canvas.width = canvas.width;
+	var context = canvas.getContext('2d');
+	var imageObj = new Image();
+	imageObj.onload = function() {
+		context.drawImage(this, 0, 0);
+	};
+	imageObj.src = detailCanvas[selectedIdea+'+'+selectedFeature];
 });
