@@ -13,6 +13,11 @@ $(document).ready(function() {
 			selectedFeature = $("."+selectedIdea)[0].attributes['id'].value;
 			$("#"+selectedFeature).addClass("selectedFeature");
 			$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
+			$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
+			$('#links').empty();
+			for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
+				$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
+			}
 		}
 	}
 });
@@ -34,6 +39,11 @@ $(".ideaTab").click(function() {
 			$("#"+selectedFeature).removeClass("selectedFeature");			
 			selectedFeature = $(this).attr('id');
 			$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
+			$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
+			$('#links').empty();
+			for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
+				$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
+			}
 		}
 		$(this).removeClass("hidden");
 	});
@@ -41,6 +51,11 @@ $(".ideaTab").click(function() {
 		$("#"+selectedFeature).removeClass("selectedFeature");
 		selectedFeature = 'zzzaaaazzzzdfasdfz';
 		$('#featTitle').text("No Features");
+		$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
+		$('#links').empty();
+		for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
+			$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
+		}
 	}
 });
 
@@ -50,4 +65,9 @@ $(".featureTab").click(function() {
 	selectedFeature = $(this).attr('id');
 
 	$('#featTitle').text($(this).children()[0].innerHTML);
+	$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
+	$('#links').empty();
+	for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
+		$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
+	}
 });

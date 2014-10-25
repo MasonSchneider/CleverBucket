@@ -124,20 +124,7 @@
 					<a id="new-link" data-toggle="modal" data-target="#new-link-modal" href="#" class="btn btn-success" type="submit">New Link</a>
 					<br><br>
 					<div class="links">
-						<ul>
-							<li><a href="#" >Google</a></li>
-							<li><a href="#" >Google2</a></li>
-							<li><a href="#" >Google3</a></li>	
-							<li><a href="#" >Google4</a></li>	
-							<li><a href="#" >Google5</a></li>	
-							<li><a href="#" >Google6</a></li>	
-							<li><a href="#" >Google7</a></li>	
-							<li><a href="#" >Google8</a></li>	
-							<li><a href="#" >Google3</a></li>	
-							<li><a href="#" >Google3</a></li>	
-							<li><a href="#" >Google3</a></li>	
-							<li><a href="#" >Google3</a></li>	
-							<li><a href="#" >Google3</a></li>							
+						<ul id="links">	
 						</ul>
 					</div><!--UL links div -->
 				</div>
@@ -147,7 +134,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h4> Sketch Area </h4>
-					<canvas class="sketchCanvas" />
+					<canvas id="sketchCanvas" class="sketchCanvas" />
 				</div>
 			</div>
 		</div>
@@ -243,6 +230,17 @@
 	</div>	
 
 	<!-- Scripts -->
+	<script type="text/javascript">
+		var detailText = new Object();
+		detailText['1+asdf'] = 'This is idea1 feature 1 text';
+		detailText['2+123'] = 'This is idea2 feature 3 text';
+
+		var detailLinks = new Object();
+		detailLinks['1+asdf'] = [['text', '#'],['google', 'http://www.google.com']];
+
+		var detailCanvas = new Object();
+
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="/static/js/cleverbucket.js"></script>
