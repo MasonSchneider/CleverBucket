@@ -35,29 +35,57 @@ body {
 	border-bottom: 1px solid black;
 }
 
+.selectedIdea {
+	background-color: #757575;
+}
+
+.ideaTab:hover {
+	background-color: #9C9C9C;
+	color: yellow;
+	cursor: hand;
+	cursor: pointer;
+}
+
 /* Features */
 .featureCol {
 	border-right: 1px solid black;
 	height: 100vh;
 	max-height: 100%;
 }
+
 .ideaTitle {
-	background-color: grey;
+	background-color: #6C498F;
+	color: #6C8F49;
 	text-align: center;
 	height:5%;
 }
+
 .featureRows{
 	height: 85%;
 }
+
 .featureScrollArea{
 	overflow-x: hidden;
 	overflow-y: auto;
 	height: 95%;
 }
+
 .featureTab{
 	padding-left: 20px;
 	border-bottom: 1px solid black;
 }
+
+.selectedFeature {
+	background-color: #757575;
+}
+
+.featureTab:hover {
+	background-color: #9C9C9C;
+	color: yellow;
+	cursor: hand;
+	cursor: pointer;
+}
+
 .featureFooter{
 	padding-top: 15px;
 	height: 10%;
@@ -70,7 +98,8 @@ body {
 	max-height: 100%;
 }
 .featureTitle{
-	background-color: grey;
+	background-color: #6C498F;
+	color: #6C8F49;
 	text-align: center;
 }
 .featureDetail{
