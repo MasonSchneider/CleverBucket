@@ -43,7 +43,7 @@ body {
 }
 
 .selectedIdea {
-	box-shadow: inset 3px 3px 3px 4px rgba(0,0,0,0.60);
+	box-shadow: inset 2px 2px 2px 3px rgba(0,0,0,0.60);
 }
 
 .ideaTab:hover {
@@ -51,7 +51,7 @@ body {
 	text-shadow: 1px 1px grey;
 	cursor: hand;
 	cursor: pointer;
-	box-shadow: inset 3px 3px 3px 4px rgba(0,0,0,0.45);
+	box-shadow: inset 1px 1px 1px 2px rgba(0,0,0,0.45);
 	
 }
 
@@ -87,7 +87,7 @@ body {
 }
 
 .selectedFeature {
-	box-shadow: inset 3px 3px 3px 4px rgba(0,0,0,0.50);
+	box-shadow: inset 2px 2px 2px 3px rgba(0,0,0,0.50);
 }
 
 .featureTab:hover {
@@ -95,7 +95,7 @@ body {
 	text-shadow: 1px 1px grey;
 	cursor: hand;
 	cursor: pointer;
-	box-shadow: inset 3px 3px 3px 4px rgba(0,0,0,0.45);
+	box-shadow: inset 1px 1px 1px 2px rgba(0,0,0,0.45);
 }
 
 .featureFooter{
