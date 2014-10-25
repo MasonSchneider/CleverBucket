@@ -42,9 +42,9 @@ $(".ideaTab").click(function() {
 
 	selectedIdea = $(this).attr('id');
 	$("."+selectedIdea).each(function(index) {
-		if (index == 0) {
-			$(this).addClass("selectedFeature");
-			$("#"+selectedFeature).removeClass("selectedFeature");			
+		if (index == 0) {			
+			$("#"+selectedFeature).removeClass("selectedFeature");
+			$(this).addClass("selectedFeature");			
 			selectedFeature = $(this).attr('id');
 			$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
 			$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);

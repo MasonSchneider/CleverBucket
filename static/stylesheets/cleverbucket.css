@@ -33,6 +33,10 @@ body {
 
 .ideaTab {
 	padding-left: 35px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	/*background-image: linear-gradient(#d1eff9, #77cfed);
 	border-color: #77cfed #77cfed hsl(195, 77%, 65%);*/
 	background-image: linear-gradient(#b6e5f5, #5cc6e9);
@@ -82,12 +86,16 @@ body {
 
 .featureTab{
 	padding-left: 20px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	background-image: linear-gradient(#b6e5f5, #5cc6e9);
 	border-color: #5cc6e9 #5cc6e9 hsl(195, 77%, 59%);
 }
 
 .selectedFeature {
-	box-shadow: inset 2px 2px 2px 3px rgba(0,0,0,0.50);
+	box-shadow: inset 0px 2px 3px 3px rgba(0,0,0,0.50);
 }
 
 .featureTab:hover {
