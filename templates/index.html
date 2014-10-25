@@ -37,7 +37,7 @@
 			<div class="row">
 				<div class="col-md-12 createAndSearch">
 					<div class="col-md-6 text-center">
-						<a class="btn btn-primary">New Idea</a>
+						<a id="new-idea" data-toggle="modal" data-target="#new-idea-modal" href="#" class="btn btn-primary">New Idea</a>
 					</div>
 					<div class="col-md-6 text-center">
 						<div class="input-group">
@@ -103,7 +103,7 @@
 						<p>Days Since Last Edit: 22</p>
 					</div>
 					<div class="col-md-6">
-						<a href="#" class="btn btn-primary" type="submit">New Feature</a>
+						<a  id="new-feature" data-toggle="modal" data-target="#new-feature-modal" href="#" class="btn btn-primary" type="submit">New Feature</a>
 					</div>
 				</div>
 			</div>
@@ -121,7 +121,7 @@
 				</div>
 				<div class="col-md-6">
 					<!--Add new link modal button-->
-					<a href="#" class="btn btn-success" type="submit">New Link</a>
+					<a id="new-link" data-toggle="modal" data-target="#new-link-modal" href="#" class="btn btn-success" type="submit">New Link</a>
 					<br><br>
 					<div class="links">
 						<ul>
@@ -152,6 +152,97 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	<!-- Modals -->
+		<!-- Insert Idea Modal -->		
+	<div class="modal fade" id="new-idea-modal" tabindex="-1" role="dialog" aria-labelledby="New Idea" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">New Idea</h4>
+				</div>
+				<form action="/insertIdea" method="POST" class="form-horizontal" role="form">
+					<input name="entity_key" type="text" class="hidden">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="name-input" class="col-sm-2 control-label">Idea Name</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="idea-name-input" name="idea-name" placeholder="Idea Name">
+							</div>
+						</div>
+					</div> <!--  Modal Body-->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary">New Idea</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+		
+		<!-- Insert Feature Modal -->
+	<div class="modal fade" id="new-feature-modal" tabindex="-1" role="dialog" aria-labelledby="New Feature" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">New Feature</h4>
+				</div>
+				<form action="/insertFeature" method="POST" class="form-horizontal" role="form">
+					<input name="entity_key" type="text" class="hidden">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="name-input" class="col-sm-2 control-label">Feature Name</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="feature-name-input" name="feature-name" placeholder="Feature Name">
+							</div>
+						</div>
+					</div> <!--  Modal Body-->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary">Create Feature</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>	
+	
+		<!-- Insert Link Modal -->
+	<div class="modal fade" id="new-link-modal" tabindex="-1" role="dialog" aria-labelledby="New Feature" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">New Link</h4>
+				</div>
+				<form action="/insertLink" method="POST" class="form-horizontal" role="form">
+					<input name="entity_key" type="text" class="hidden">
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="title-input" class="col-sm-2 control-label">Title</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="link-title-input" name="link-title" placeholder="Link Title">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="url-input" class="col-sm-2 control-label">URL</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="link-url-input" name="link-url" placeholder="URL">
+							</div>
+						</div>
+					</div> <!--  Modal Body-->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary">New Link</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>	
+
+	<!-- Scripts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="/static/js/cleverbucket.js"></script>

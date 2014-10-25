@@ -30,7 +30,24 @@ class IndexPage(webapp2.RequestHandler):
     	template = jinja_env.get_template("templates/index.html")
         self.response.write(template.render())
 		
+class InsertIdeaAction(webapp2.RequestHandler):
+    def post(self):
+		#TODO: add backend stuff here
+		self.redirect(self.request.referer)
+
+class InsertFeatureAction(webapp2.RequestHandler):
+    def post(self):
+		#TODO: add backend
+		self.redirect(self.request.referer)
+class InsertLinkAction(webapp2.RequestHandler):
+    def post(self):
+		#TODO: backend
+		self.redirect(self.request.referer)
 
 app = webapp2.WSGIApplication([
-    ('/', IndexPage)
+    ('/', IndexPage),
+	("/insertIdea",InsertIdeaAction),
+	("/insertFeature",InsertFeatureAction),
+	("/insertLink",InsertLinkAction)
+	
 ], debug=True)
