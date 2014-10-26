@@ -2,8 +2,18 @@ body {
 	height: 100%;
 	width: 99.2%;
 	overflow: auto;
+
 	/*color: #fff056;	
 	background-color: #191919;*/
+}
+
+.delete-icon {
+	color: red;
+	padding-top: 6px;
+}
+.share-icon {
+	color: green;
+	padding-top: 6px;
 }
 
 /* Ideas */
@@ -45,10 +55,17 @@ body {
 	color: #343D3D;
 
 }
+.ideaTabItem {
+	font-size: 1.5em;
+    margin-left: 0;
+    margin-right: 0;
+
+}
 
 .selectedIdea {
 	box-shadow: inset 2px 2px 2px 3px rgba(0,0,0,0.60);
 }
+
 
 .ideaTab:hover {
 	color: white;
