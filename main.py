@@ -44,10 +44,22 @@ class InsertLinkAction(webapp2.RequestHandler):
 		#TODO: backend
 		self.redirect(self.request.referer)
 
+class DeleteIdeaAction(webapp2.RequestHandler):
+    def post(self):
+		#TODO: Backend stuff
+		self.redirect(self.request.referer)
+
+class DeleteFeatureAction(webapp2.RequestHandler):
+    def post(self):
+		#TODO: Backend stuff
+		self.redirect(self.request.referer)
+
 app = webapp2.WSGIApplication([
     ('/', IndexPage),
 	("/insertIdea",InsertIdeaAction),
 	("/insertFeature",InsertFeatureAction),
-	("/insertLink",InsertLinkAction)
+	("/insertLink",InsertLinkAction),
+	("/deleteIdea",DeleteIdeaAction),
+	("/deleteFeature",DeleteFeatureAction)
 	
 ], debug=True)

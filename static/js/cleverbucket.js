@@ -6,9 +6,10 @@ var start = function() {
 	
 	// Initialize for error avoidance
 	selectedIdea = $(".ideaTab")[0].attributes['id'].value;
-	if ($("."+selectedIdea).length > 0) 
+	if ($("."+selectedIdea).length > 0) {
 		selectedFeature = $("."+selectedIdea)[0].attributes['id'].value;
-
+		$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
+	}
 	// Set height of idea scroll area
 	var taken = $('.profileArea').height();
 	taken += $('.createAndSearch').height();
@@ -54,8 +55,11 @@ $( window ).resize(function() {
 $(document).ready(function() {start();});
 
 $(".ideaTab").click(function() {
+	$("#"+selectedIdea+" .ideaTabItemButtons").addClass("hidden");
 	$("#"+selectedIdea).removeClass("selectedIdea");
 	$(this).addClass("selectedIdea");
+	$(".selectedIdea" + " .ideaTabItemButtons").removeClass("hidden");
+	
 
 	$("."+selectedIdea).each(function(index) {
 		$(this).addClass("hidden");
@@ -65,10 +69,12 @@ $(".ideaTab").click(function() {
 
 	selectedIdea = $(this).attr('id');
 	$("."+selectedIdea).each(function(index) {
-		if (index == 0 && $(window).width() > 980) {			
+		if (index == 0 && $(window).width() > 980) {	
+			$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");	
 			$("#"+selectedFeature).removeClass("selectedFeature");
-			$(this).addClass("selectedFeature");			
+			$(this).addClass("selectedFeature");
 			selectedFeature = $(this).attr('id');
+			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
 			$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
 			$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
 			$('#links').empty();
@@ -103,9 +109,11 @@ $(".ideaTab").click(function() {
 });
 
 $(".featureTab").click(function() {
+	$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");
 	$("#"+selectedFeature).removeClass("selectedFeature");
 	$(this).addClass("selectedFeature");
 	selectedFeature = $(this).attr('id');
+	$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
 
 	$('#featTitle').text($(this).children()[0].innerHTML);
 	$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
