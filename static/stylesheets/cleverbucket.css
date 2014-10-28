@@ -22,6 +22,16 @@ body {
 	padding-right: 5px;
 }
 
+#back-btn-idea {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+
+#back-btn-feature {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+
 /* Ideas */
 .ideaCol {
 	border-right: 1px solid black;
@@ -42,7 +52,6 @@ body {
 .ideaScrollArea {
 	overflow-y: auto;
 	overflow-x: hidden;
-	/* TODO: Make the height based on other heights */
 	height: 600px;
 	
 }
@@ -97,6 +106,17 @@ body {
 	height:5%;
 }
 
+#idTitle {
+	font-size: 24px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+	color: inherit;
+}
+
 .featureRows{
 	height: 85%;
 }
@@ -108,7 +128,7 @@ body {
 }
 
 .featureTab{
-	padding-left: 20px;
+	padding-left: 35px;
 	margin-top: 0px;
 	margin-bottom: 0px;
 	padding-top: 6px;
@@ -146,6 +166,7 @@ body {
 	height: 100vh;
 	max-height: 100%;
 }
+
 #featureTitle{
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -157,23 +178,39 @@ body {
 	color: white;
 	text-align: center;
 }
+
+#featTitle {
+	font-size: 24px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+	font-family: inherit;
+	font-weight: 500;
+	line-height: 1.1;
+	color: inherit;
+}
+
 .featureDetail{
 	padding-top: 20px;
 }
+
 #detailArea{
 	width:85%;
 	resize: none;
 }
+
 .links{
 	overflow-y: auto;
 	overflow-x: hidden;
 	height: 190px;
 }
+
 .sketchCanvas{
 	height: 500px;
 	width:95%;
 	border: 1px solid black;
 }
+
 .btn-custom {
 	background-color: hsl(197, 100%, 26%) !important;
 	background-repeat: repeat-x;
@@ -183,6 +220,7 @@ body {
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.72);
 	-webkit-font-smoothing: antialiased;
 }
+
 .btn-customDelete {
 	background-color: hsl(0, 85%, 26%) !important;
 	background-repeat: repeat-x;
@@ -191,3 +229,4 @@ body {
 	color: #fff !important;
 	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
 	-webkit-font-smoothing: antialiased;
+}

@@ -2,13 +2,18 @@
 var selectedIdea = "";
 var selectedFeature = "";
 
-var start = function() {
-	
+var start = function() {	
 	// Initialize for error avoidance
 	selectedIdea = $(".ideaTab")[0].attributes['id'].value;
 	if ($("."+selectedIdea).length > 0) {
 		selectedFeature = $("."+selectedIdea)[0].attributes['id'].value;
-		$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
+		if ($(window).width() >= 980) {
+			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
+			$("#"+selectedIdea + " .ideaTabItemButtons").removeClass("hidden");
+		} else {
+			$("#"+selectedFeature + " .featureTabDeleteButton").addClass("hidden");
+			$("#"+selectedIdea + " .ideaTabItemButtons").addClass("hidden");
+		}
 	}
 	// Set height of idea scroll area
 	var taken = $('.profileArea').height();
@@ -17,9 +22,23 @@ var start = function() {
 
 	// Prevent auto select on mobile
 	if ($(window).width() < 980) {
+
   		$("#"+selectedIdea).removeClass("selectedIdea");
   		$("#"+selectedFeature).removeClass("selectedFeature");
+
+  		// Back button for mobile
+  		$("#back-btn-idea").removeClass("hidden");
+  		$("#back-btn-feature").removeClass("hidden");
+  		$("#idTitle").css('padding-right', '60px');
+  		$("#featTitle").css('padding-right', '60px');
+
 	} else {
+		// Hide button in web
+		$("#back-btn-idea").addClass("hidden");
+  		$("#back-btn-feature").addClass("hidden");
+  		$("#idTitle").css('padding-right', '0px');
+  		$("#featTitle").css('padding-right', '0px');
+
 		if ($(".ideaTab").length > 0) {
 			$("#"+selectedIdea).addClass("selectedIdea");
 
@@ -48,7 +67,6 @@ var start = function() {
 }
 
 $( window ).resize(function() {
-	console.log("resize");
 	start();
 });
 
@@ -131,4 +149,18 @@ $(".featureTab").click(function() {
 	imageObj.src = detailCanvas[selectedIdea+'+'+selectedFeature];
 	$('.featureCol').addClass('hidden-xs').addClass('hidden-sm');
 	$('.detailCol').removeClass('hidden-xs').removeClass('hidden-sm');
+});
+
+$("#back-btn-idea").click(function() {
+	$('.ideaCol').removeClass('hidden-xs').removeClass('hidden-sm');
+	$('.featureCol').addClass('hidden-xs').addClass('hidden-sm');
+	$("#"+selectedIdea+" .ideaTabItemButtons").addClass("hidden");
+	$("#"+selectedIdea).removeClass("selectedIdea");
+});
+
+$("#back-btn-feature").click(function() {
+	$('.featureCol').removeClass('hidden-xs').removeClass('hidden-sm');
+	$('.detailCol').addClass('hidden-xs').addClass('hidden-sm');
+	$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");
+	$("#"+selectedFeature).removeClass("selectedFeature");
 });

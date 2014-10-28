@@ -54,7 +54,7 @@
 					<div class="row">
 						<div id="1" class="col-md-12 ideaTab">
 							<span class="ideaTabItem">Idea 1</span>
-							<span class="ideaTabItemButtons ">
+							<span class="ideaTabItemButtons hidden">
 								<a id="delete-idea" href="#" data-toggle="modal" data-target="#delete-idea-modal" type="submit " class="pull-right"><i class="glyphicon glyphicon-remove delete-icon"></i></a>
 								<a id="share-idea" href="#" data-toggle="modal" data-target="#share-idea-modal" type="submit" class="pull-right"><i class="glyphicon glyphicon-globe share-icon"></i></a>
 							</span>
@@ -85,7 +85,7 @@
 		<div class="hidden-xs hidden-sm col-md-3 featureCol">
 			<div class="row" >
 				<div id="ideaTitle" class="col-md-12" >
-					<h3 id="idTitle">Idea</h3>
+					<a id="back-btn-idea" href="#" class="hidden btn btn-custom pull-left"><i class="glyphicon glyphicon-chevron-left"></i> Ideas</a><p id="idTitle">Idea</p>
 				</div>
 			</div>
 			<div class="row featureRows">
@@ -128,21 +128,22 @@
 			<!-- Footer with info about Idea being Viewed-->
 			<div class="row">
 				<div class="col-md-12 featureFooter">
-					<div class="col-md-6">
+					<div class="col-md-6 col-sm-6 col-xs-6">
 						<p>Idea Created On: 11-11-11</p>
 						<p>Days Since Last Edit: 22</p>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 col-sm-6 col-xs-6">
 						<a  id="new-feature" data-toggle="modal" data-target="#new-feature-modal" href="#" class="btn btn-custom" type="submit">New Feature</a>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<!-- Screen column 3 -->
 		<div class="hidden-xs hidden-sm col-md-6 detailCol">
 			<div class="row" >
 				<div id="featureTitle" class="col-md-12" >
-					<h3 id="featTitle">Feature</h3>
+					<a id="back-btn-feature" href="#" class="hidden btn btn-custom pull-left"><i class="glyphicon glyphicon-chevron-left"></i> Features</a><p id="featTitle">Feature</p>
 				</div>
 			</div>
 			<div class="row featureDetail">
