@@ -30,7 +30,13 @@
 								<button type="button" class="btn btn-default">Shared</button>
 							</div>
 						</div>
-						<div class="col-md-3 text-center"><a href="#">Settings</a></div>
+						
+						{% if logout_url %}
+						<div class="col-md-3 text-center"><a href="{{ logout_url }}">Logout</a></div>
+						{% else %}
+						<div class="col-md-3 text-center"><a href="{{ login_url }}">Login</a></div>
+						{% endif %}
+					
 					</div>
 				</div>
 			</div>

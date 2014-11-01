@@ -16,6 +16,8 @@
 #
 
 from google.appengine.ext import ndb
+from google.appengine.api import users
+from models import Idea
 import webapp2
 import os
 import jinja2
@@ -27,8 +29,15 @@ jinja_env = jinja2.Environment(
 
 class IndexPage(webapp2.RequestHandler):
     def get(self):
+    	user = users.get_current_user()
     	template = jinja_env.get_template("templates/index.html")
-        self.response.write(template.render())
+    	if not user:
+    		#TODO Query a general anon account to fill with data
+			
+    		self.response.write(template.render({"login_url": users.create_login_url("/")}))
+    	else:
+    		#ideas = Idea.query(Idea.creator == user )
+    		self.response.write(template.render({"logout_url": users.create_logout_url("/")}))
 		
 class InsertIdeaAction(webapp2.RequestHandler):
     def post(self):
