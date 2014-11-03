@@ -32,9 +32,8 @@ class IndexPage(webapp2.RequestHandler):
     	user = users.get_current_user()
     	template = jinja_env.get_template("templates/index.html")
     	if not user:
-    		#TODO Query a general anon account to fill with data
-			
-    		self.response.write(template.render({"login_url": users.create_login_url("/")}))
+    		ideas = [['123', 'Idea Here', [['ff', 'Feature Here', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf'], ['asdf', 'Feature Me', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf']]], ['321', 'Two Cool', [['a', 'I\'m cool', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf']]], ['567', 'Three here', []]]
+    		self.response.write(template.render({"login_url": users.create_login_url("/"), "ideas": ideas}))
     	else:
     		#ideas = Idea.query(Idea.creator == user )
     		self.response.write(template.render({"logout_url": users.create_logout_url("/")}))
@@ -48,6 +47,7 @@ class InsertFeatureAction(webapp2.RequestHandler):
     def post(self):
 		#TODO: add backend
 		self.redirect(self.request.referer)
+
 class InsertLinkAction(webapp2.RequestHandler):
     def post(self):
 		#TODO: backend

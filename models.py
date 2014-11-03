@@ -1,7 +1,6 @@
 from google.appengine.ext import ndb
 
-class User(ndb.Model):
-	
+class User(ndb.Model):	
 	def get_id(self):
 		return self.key.string_id();
 
