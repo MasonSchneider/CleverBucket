@@ -3,7 +3,7 @@ from google.appengine.ext import ndb
 class Idea(ndb.Model):
 	title = ndb.StringProperty();
 	features = ndb.StringProperty(repeated=True);
-	dateCreated = ndb.DateProperty();
+	dateCreated = ndb.DateProperty(auto_now_add=True);
 
 	
 class Feature(ndb.Model):

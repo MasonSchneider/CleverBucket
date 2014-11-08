@@ -41,8 +41,9 @@ class IndexPage(webapp2.RequestHandler):
 class InsertIdeaAction(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
-        new_idea = Idea(parent=ndb.Key("Entity",user.email().lower()))
-        new_idea.title = self.request.get("idea_name")
+        new_idea = Idea(parent=ndb.Key("Entity",user.email().lower()),
+        				title=self.request.get("idea-name"),
+        				features=[])
         new_idea.put()
         self.redirect(self.request.referer)
 
