@@ -5,14 +5,21 @@ var selectedFeature = "";
 var start = function() {	
 	// Initialize for error avoidance
 	selectedIdea = $(".ideaTab")[0].attributes['id'].value;
+	$(".ideaKey").val(selectedIdea);
+
+	if ($(window).width() >= 980) {
+		$("#"+selectedIdea + " .ideaTabItemButtons").removeClass("hidden");
+	}
+	else {		
+		$("#"+selectedIdea + " .ideaTabItemButtons").addClass("hidden");
+	}
+
 	if ($("."+selectedIdea).length > 0) {
 		selectedFeature = $("."+selectedIdea)[0].attributes['id'].value;
 		if ($(window).width() >= 980) {
 			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
-			$("#"+selectedIdea + " .ideaTabItemButtons").removeClass("hidden");
 		} else {
 			$("#"+selectedFeature + " .featureTabDeleteButton").addClass("hidden");
-			$("#"+selectedIdea + " .ideaTabItemButtons").addClass("hidden");
 		}
 	}
 	// Set height of idea scroll area
@@ -86,6 +93,7 @@ $(".ideaTab").click(function() {
 	$('#idTitle').text($(this).children()[0].innerHTML);
 
 	selectedIdea = $(this).attr('id');
+	$(".ideaKey").val(selectedIdea);
 	$("."+selectedIdea).each(function(index) {
 		if (index == 0 && $(window).width() > 980) {	
 			$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");	
