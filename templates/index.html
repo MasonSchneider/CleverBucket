@@ -143,7 +143,12 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h4> Sketch Area </h4>
-					<canvas id="sketchCanvas" class="sketchCanvas" />
+					<div class="tools">
+						<a href="#sketchCanvas" data-tool="marker">Marker</a>
+						 <a href="#sketchCanvas" data-tool="eraser">Eraser</a>
+						 <a href="#sketchCanvas" data-download="png" >Download</a>
+					</div>
+					<canvas id="sketchCanvas" height="500" width="925"class="sketchCanvas" />
 				</div>
 			</div>
 		</div>
@@ -302,5 +307,22 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="/static/js/cleverbucket.js"></script>
+	<script src="/static/js/sketch.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#sketchCanvas').sketch();
+		});
+	</script>
+	<script type="text/javascript">
+		$(function() {
+			$.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
+			$('.tools').append("<a href='#sketchCanvas' data-color='" + this + "' style='width: 20px; background: " + this + ";margin:0px 5px; padding-right: 20px;'></a> ");
+			});
+			$.each([3, 5, 10, 15], function() {
+			$('.tools').append("<a href='#sketchCanvas' data-size='" + this + "' style='width: 20px; text-decoration: none; color: black; padding: 0px 10px; margin: 0px 5px; background: #ccc'>" + this + "</a> ");
+			});
+			$('#sketchCanvas').sketch();
+			});
+	</script>
 </body>
 </html>
