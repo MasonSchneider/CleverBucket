@@ -104,7 +104,8 @@ class DeleteIdeaAction(webapp2.RequestHandler):
 
 class DeleteFeatureAction(webapp2.RequestHandler):
     def post(self):
-		#TODO: Backend stuff
+		feature_key = ndb.Key(urlsafe=self.request.get("feature-key"))
+		feature_key.delete()
 		self.redirect(self.request.referer)
 
 app = webapp2.WSGIApplication([

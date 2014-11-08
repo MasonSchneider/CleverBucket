@@ -16,6 +16,7 @@ var start = function() {
 
 	if ($("."+selectedIdea).length > 0) {
 		selectedFeature = $("."+selectedIdea)[0].attributes['id'].value;
+		$(".featKey").val(selectedFeature);
 		if ($(window).width() >= 980) {
 			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
 		} else {
@@ -53,6 +54,7 @@ var start = function() {
 
 			if ($("."+selectedIdea).length > 0) {
 				selectedFeature = $("."+selectedIdea)[0].attributes['id'].value;
+				$(".featKey").val(selectedFeature);
 				$("#"+selectedFeature).addClass("selectedFeature");
 				$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
 				$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
@@ -100,6 +102,7 @@ $(".ideaTab").click(function() {
 			$("#"+selectedFeature).removeClass("selectedFeature");
 			$(this).addClass("selectedFeature");
 			selectedFeature = $(this).attr('id');
+			$(".featKey").val(selectedFeature);
 			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
 			$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
 			$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
@@ -139,6 +142,7 @@ $(".featureTab").click(function() {
 	$("#"+selectedFeature).removeClass("selectedFeature");
 	$(this).addClass("selectedFeature");
 	selectedFeature = $(this).attr('id');
+	$(".featKey").val(selectedFeature);
 	$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
 
 	$('#featTitle').text($(this).children()[0].innerHTML);
@@ -172,3 +176,15 @@ $("#back-btn-feature").click(function() {
 	$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");
 	$("#"+selectedFeature).removeClass("selectedFeature");
 });
+
+$("#linkForm").submit(function(event) {
+	var title = $("#link-title-input").val();
+	var url = $("#link-url-input").val();
+	if (url.length > 0 && title.length > 0) {
+		detailLinks[selectedIdea+'+'+selectedFeature].push([title, url]);
+		$('#links').append('<li><a href="'+url+'">'+title+'</a></li>');
+	}
+	$("#new-link-modal").modal("hide");
+	return false;
+});
+
