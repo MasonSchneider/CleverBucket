@@ -31,17 +31,20 @@ class IndexPage(webapp2.RequestHandler):
     def get(self):
     	user = users.get_current_user()
     	template = jinja_env.get_template("templates/index.html")
+        ideas = [['123', 'Idea Here', [['ff', 'Feature Here', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf'], ['asdf', 'Feature Me', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf']]], ['321', 'Two Cool', [['a', 'I\'m cool', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf']]], ['567', 'Three here', []]]
     	if not user:
-    		ideas = [['123', 'Idea Here', [['ff', 'Feature Here', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf'], ['asdf', 'Feature Me', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf']]], ['321', 'Two Cool', [['a', 'I\'m cool', 'description', [['#', 'text'],['#', 'other']], 'data:image/png;base64,iasdf']]], ['567', 'Three here', []]]
+            #Query here
     		self.response.write(template.render({"login_url": users.create_login_url("/"), "ideas": ideas}))
-    	else:
-    		#ideas = Idea.query(Idea.creator == user )
-    		self.response.write(template.render({"logout_url": users.create_logout_url("/")}))
+        else:
+            self.response.write(template.render({"logout_url": users.create_logout_url("/")}))
 		
 class InsertIdeaAction(webapp2.RequestHandler):
     def post(self):
-		#TODO: add backend stuff here
-		self.redirect(self.request.referer)
+        user = users.get_current_user()
+        new_idea = Idea(parent=ndb.Key("Entity",user.email().lower()))
+        new_idea.title = self.request.get("idea_name")
+        new_idea.put()
+        self.redirect(self.request.referer)
 
 class InsertFeatureAction(webapp2.RequestHandler):
     def post(self):

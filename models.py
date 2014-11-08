@@ -1,12 +1,6 @@
 from google.appengine.ext import ndb
 
-class User(ndb.Model):	
-	def get_id(self):
-		return self.key.string_id();
-
-
 class Idea(ndb.Model):
-	creator = ndb.KeyProperty(kind=User)
 	title = ndb.StringProperty();
 	features = ndb.StringProperty(repeated=True);
 	dateCreated = ndb.DateProperty();
