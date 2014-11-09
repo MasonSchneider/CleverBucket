@@ -11,5 +11,5 @@ class Feature(ndb.Model):
 	info = ndb.StringProperty();
 	linkText = ndb.StringProperty(repeated=True)
 	linkUrl = ndb.StringProperty(repeated=True)
-	cavas_url = ndb.StringProperty();
+	canvas_url = ndb.TextProperty();
 	last_touch_date_time = ndb.DateTimeProperty(auto_now=True)

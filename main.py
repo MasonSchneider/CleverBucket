@@ -53,7 +53,7 @@ def getStructuredFeaturesFromKey(key):
 	features = []
 	feature_query = Feature.query(ancestor=key)
 	for feature in feature_query:
-		temp = [feature.key.urlsafe(), feature.title, feature.info, [], feature.cavas_url]
+		temp = [feature.key.urlsafe(), feature.title, feature.info, [], feature.canvas_url]
 		temp[3] = getStructuredLinks(feature.linkText, feature.linkUrl)
 		features.append(temp)
 	return features
@@ -108,12 +108,25 @@ class DeleteFeatureAction(webapp2.RequestHandler):
 		feature_key.delete()
 		self.redirect(self.request.referer)
 
+class UpdateFeatureAction(webapp2.RequestHandler):
+	def post(self):
+		feature_key = ndb.Key(urlsafe=self.request.get("key"))
+		feature = feature_key.get()
+		feature.info = self.request.get("info")
+		print self.request.arguments()
+		feature.linkText = self.request.get_all("texts[]")
+		feature.linkUrl = self.request.get_all("urls[]")
+		feature.canvas_url = self.request.get("img")
+		feature.put()
+		self.response.write("Success")
+
 app = webapp2.WSGIApplication([
     ('/', IndexPage),
 	("/insertIdea",InsertIdeaAction),
 	("/insertFeature",InsertFeatureAction),
 	("/insertLink",InsertLinkAction),
 	("/deleteIdea",DeleteIdeaAction),
-	("/deleteFeature",DeleteFeatureAction)
+	("/deleteFeature",DeleteFeatureAction),
+	("/updateFeature",UpdateFeatureAction)
 	
 ], debug=True)

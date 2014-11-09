@@ -19,8 +19,10 @@ var start = function() {
 		$(".featKey").val(selectedFeature);
 		if ($(window).width() >= 980) {
 			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
+			$("#"+selectedFeature + " .featureTabSaveButton").removeClass("hidden");
 		} else {
 			$("#"+selectedFeature + " .featureTabDeleteButton").addClass("hidden");
+			$("#"+selectedFeature + " .featureTabSaveButton").addClass("hidden");
 		}
 	}
 	// Set height of idea scroll area
@@ -98,13 +100,17 @@ $(".ideaTab").click(function() {
 	selectedIdea = $(this).attr('id');
 	$(".ideaKey").val(selectedIdea);
 	$("."+selectedIdea).each(function(index) {
-		if (index == 0 && $(window).width() > 980) {	
-			$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");	
+		if (index == 0 && $(window).width() > 980) {
+			if (selectedFeature != "") {
+				$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");
+				$("#"+selectedFeature + " .featureTabSaveButton").addClass("hidden");
+			}
 			$("#"+selectedFeature).removeClass("selectedFeature");
 			$(this).addClass("selectedFeature");
 			selectedFeature = $(this).attr('id');
 			$(".featKey").val(selectedFeature);
-			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
+			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");			
+			$("#"+selectedFeature + " .featureTabSaveButton").removeClass("hidden");
 			$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
 			$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
 			$('#links').empty();
@@ -138,12 +144,14 @@ $(".ideaTab").click(function() {
 });
 
 $(".featureTab").click(function() {
-	$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");
+	$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");	
+	$("#"+selectedFeature + " .featureTabSaveButton").addClass("hidden");
 	$("#"+selectedFeature).removeClass("selectedFeature");
 	$(this).addClass("selectedFeature");
 	selectedFeature = $(this).attr('id');
 	$(".featKey").val(selectedFeature);
 	$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
+	$("#"+selectedFeature + " .featureTabSaveButton").removeClass("hidden");
 
 	$('#featTitle').text($(this).children()[0].innerHTML);
 	$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
@@ -173,7 +181,8 @@ $("#back-btn-idea").click(function() {
 $("#back-btn-feature").click(function() {
 	$('.featureCol').removeClass('hidden-xs').removeClass('hidden-sm');
 	$('.detailCol').addClass('hidden-xs').addClass('hidden-sm');
-	$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");
+	$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");	
+	$("#"+selectedFeature + " .featureTabSaveButton").addClass("hidden");
 	$("#"+selectedFeature).removeClass("selectedFeature");
 });
 
@@ -187,4 +196,24 @@ $("#linkForm").submit(function(event) {
 	$("#new-link-modal").modal("hide");
 	return false;
 });
+
+$(".save-feature").click(function() {
+	var info = $("#detailArea").val();
+	var linkText = [];
+	var linkUrls = [];
+	$("#links").children("li").each(function(index) {
+		var text = $(this).find('a').text();
+		var url = $(this).find('a').attr('href')
+		linkText.push(text);
+		linkUrls.push(url);
+	});
+	var canvas = document.getElementById('sketchCanvas');
+	var image = canvas.toDataURL();
+
+	$.post("http://localhost.fiddler:8080/updateFeature", { "key": selectedFeature, "info": info, "texts": linkText, "urls": linkUrls, "img": image });
+
+	detailText[selectedIdea+'+'+selectedFeature] = info;
+	detailCanvas[selectedIdea+'+'+selectedFeature] = image;
+});
+
 
