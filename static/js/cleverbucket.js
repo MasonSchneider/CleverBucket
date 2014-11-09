@@ -210,7 +210,7 @@ $(".save-feature").click(function() {
 	var canvas = document.getElementById('sketchCanvas');
 	var image = canvas.toDataURL();
 
-	$.post("http://localhost.fiddler:8080/updateFeature", { "key": selectedFeature, "info": info, "texts": linkText, "urls": linkUrls, "img": image });
+	$.post("/updateFeature", { "key": selectedFeature, "info": info, "texts": linkText, "urls": linkUrls, "img": image });
 
 	detailText[selectedIdea+'+'+selectedFeature] = info;
 	detailCanvas[selectedIdea+'+'+selectedFeature] = image;
