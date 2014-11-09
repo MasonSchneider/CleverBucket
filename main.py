@@ -113,7 +113,6 @@ class UpdateFeatureAction(webapp2.RequestHandler):
 		feature_key = ndb.Key(urlsafe=self.request.get("key"))
 		feature = feature_key.get()
 		feature.info = self.request.get("info")
-		print self.request.arguments()
 		feature.linkText = self.request.get_all("texts[]")
 		feature.linkUrl = self.request.get_all("urls[]")
 		feature.canvas_url = self.request.get("img")
