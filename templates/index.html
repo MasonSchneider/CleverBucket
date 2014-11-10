@@ -107,8 +107,8 @@
 			<div class="row">
 				<div class="col-md-12 featureFooter">
 					<div class="col-md-6 col-sm-6 col-xs-6">
-						<p>Idea Created On: <span id="createdDate">11-11-11</span></p>
-						<p>Last Edited: <span id="lastEdit">12-12-12</span></p>
+						<p>Idea Created: <span id="createdDate"></span></p>
+						<p>Last Edited: <span id="lastEdit"></span></p>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<a  id="new-feature" data-toggle="modal" data-target="#new-feature-modal" href="#" class="btn btn-custom" type="submit">New Feature</a>
@@ -296,12 +296,16 @@
 		var detailText = new Object();
 		var detailLinks = new Object();
 		var detailCanvas = new Object();
+		var ideaDates = new Object();
+		var featureDates = new Object();
 		{% for idea in ideas %}
 		{% set outerIndex = loop.index0 %}
 		{% for feature in idea[2] %}
 		detailText['{{idea[0]}}+{{feature[0]}}'] = '{{ feature[2]|safe }}';
 		detailCanvas['{{idea[0]}}+{{feature[0]}}'] = '{{ feature[4]|safe }}';
-		detailLinks['{{idea[0]}}+{{feature[0]}}'] = [{% for link in feature[3] %}['{{ link[1] }}', '{{ link[0] }}'],{% endfor %}];
+		detailLinks['{{idea[0]}}+{{feature[0]}}'] = [{% for link in feature[3] %}['{{ link[1]|safe }}', '{{ link[0] }}'],{% endfor %}];
+		ideaDates['{{idea[0]}}'] = '{{idea[3]}}';
+		featureDates['{{idea[0]}}+{{feature[0]}}'] = '{{feature[5]}}';
 		{% endfor %}
 		{% endfor %}		
 	</script>

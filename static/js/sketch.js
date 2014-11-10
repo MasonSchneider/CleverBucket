@@ -70,7 +70,6 @@ var __slice = Array.prototype.slice;
     }
 	Sketch.prototype.clear = function() {
       this.actions = [];
-	  console.log("clearing");
       return this.redraw();
 };
     Sketch.prototype.download = function(format) {

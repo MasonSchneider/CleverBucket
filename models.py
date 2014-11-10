@@ -12,4 +12,4 @@ class Feature(ndb.Model):
 	linkText = ndb.StringProperty(repeated=True)
 	linkUrl = ndb.StringProperty(repeated=True)
 	canvas_url = ndb.TextProperty();
-	last_touch_date_time = ndb.DateTimeProperty(auto_now=True)
+	last_touch_date_time = ndb.DateProperty(auto_now=True)

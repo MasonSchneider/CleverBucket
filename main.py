@@ -53,7 +53,7 @@ def getStructuredFeaturesFromKey(key):
 	features = []
 	feature_query = Feature.query(ancestor=key)
 	for feature in feature_query:
-		temp = [feature.key.urlsafe(), feature.title, feature.info, [], feature.canvas_url]
+		temp = [feature.key.urlsafe(), feature.title, feature.info, [], feature.canvas_url, feature.last_touch_date_time]
 		temp[3] = getStructuredLinks(feature.linkText, feature.linkUrl)
 		features.append(temp)
 	return features

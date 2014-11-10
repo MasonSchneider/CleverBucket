@@ -6,6 +6,7 @@ var start = function() {
 	// Initialize for error avoidance
 	selectedIdea = $(".ideaTab")[0].attributes['id'].value;
 	$(".ideaKey").val(selectedIdea);
+	$("#createdDate").text(ideaDates[selectedIdea]);
 
 	if ($(window).width() >= 980) {
 		$("#"+selectedIdea + " .ideaTabItemButtons").removeClass("hidden");
@@ -17,6 +18,7 @@ var start = function() {
 	if ($("."+selectedIdea).length > 0) {
 		selectedFeature = $("."+selectedIdea)[0].attributes['id'].value;
 		$(".featKey").val(selectedFeature);
+		$("#lastEdit").text(featureDates[selectedIdea+"+"+selectedFeature]);
 		if ($(window).width() >= 980) {
 			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
 			$("#"+selectedFeature + " .featureTabSaveButton").removeClass("hidden");
@@ -57,6 +59,7 @@ var start = function() {
 			if ($("."+selectedIdea).length > 0) {
 				selectedFeature = $("."+selectedIdea)[0].attributes['id'].value;
 				$(".featKey").val(selectedFeature);
+			$("#lastEdit").text(featureDates[selectedIdea+"+"+selectedFeature]);
 				$("#"+selectedFeature).addClass("selectedFeature");
 				$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
 				$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
@@ -99,6 +102,7 @@ $(".ideaTab").click(function() {
 
 	selectedIdea = $(this).attr('id');
 	$(".ideaKey").val(selectedIdea);
+	$("#createdDate").text(ideaDates[selectedIdea]);
 	$("."+selectedIdea).each(function(index) {
 		if (index == 0 && $(window).width() > 980) {
 			if (selectedFeature != "") {
@@ -109,6 +113,7 @@ $(".ideaTab").click(function() {
 			$(this).addClass("selectedFeature");
 			selectedFeature = $(this).attr('id');
 			$(".featKey").val(selectedFeature);
+			$("#lastEdit").text(featureDates[selectedIdea+"+"+selectedFeature]);
 			$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");			
 			$("#"+selectedFeature + " .featureTabSaveButton").removeClass("hidden");
 			$('#featTitle').text($("#"+selectedFeature).children()[0].innerHTML);
@@ -137,6 +142,7 @@ $(".ideaTab").click(function() {
 		$("#"+selectedFeature).removeClass("selectedFeature");
 		selectedFeature = 'zzzaaaazzzzdfasdfz';
 		$('#featTitle').text("No Features");
+		$("#lastEdit").text("");
 		$('#detailArea').val(detailText[selectedIdea+'+'+selectedFeature]);
 		$('#links').empty();
 		for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
@@ -157,6 +163,7 @@ $(".featureTab").click(function() {
 	$("#"+selectedFeature).removeClass("selectedFeature");
 	$(this).addClass("selectedFeature");
 	selectedFeature = $(this).attr('id');
+	$("#lastEdit").text(featureDates[selectedIdea+"+"+selectedFeature]);
 	$(".featKey").val(selectedFeature);
 	$("#"+selectedFeature + " .featureTabDeleteButton").removeClass("hidden");
 	$("#"+selectedFeature + " .featureTabSaveButton").removeClass("hidden");
@@ -223,6 +230,17 @@ $(".save-feature").click(function() {
 
 	detailText[selectedIdea+'+'+selectedFeature] = info;
 	detailCanvas[selectedIdea+'+'+selectedFeature] = image;
+	Date.prototype.yyyymmdd = function() {         
+                                
+        var yyyy = this.getFullYear().toString();                                    
+        var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based         
+        var dd  = this.getDate().toString();             
+                            
+        return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
+    };  
+
+	d = new Date();
+	featureDates[selectedIdea+"+"+selectedFeature] = d.yyyymmdd();
 });
 
 
