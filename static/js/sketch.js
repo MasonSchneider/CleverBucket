@@ -61,10 +61,18 @@ var __slice = Array.prototype.slice;
           if ($(this).attr('data-download')) {
             sketch.download($(this).attr('data-download'));
           }
+		  if ($(this).attr('data-clear')) {
+            sketch.clear();
+		  }
           return false;
         });
       }
     }
+	Sketch.prototype.clear = function() {
+      this.actions = [];
+	  console.log("clearing");
+      return this.redraw();
+};
     Sketch.prototype.download = function(format) {
       var mime;
       format || (format = "png");
@@ -106,7 +114,7 @@ var __slice = Array.prototype.slice;
     };
     Sketch.prototype.redraw = function() {
       var sketch;
-      this.el.width = this.canvas.width();
+      //this.el.width = this.canvas.width();
       this.context = this.el.getContext('2d');
       sketch = this;
       $.each(this.actions, function() {

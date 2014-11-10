@@ -108,7 +108,7 @@
 				<div class="col-md-12 featureFooter">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<p>Idea Created On: <span id="createdDate">11-11-11</span></p>
-						<p>Last Edited: <span id="lastEdit">12-22-12</span></p>
+						<p>Last Edited: <span id="lastEdit">12-12-12</span></p>
 					</div>
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<a  id="new-feature" data-toggle="modal" data-target="#new-feature-modal" href="#" class="btn btn-custom" type="submit">New Feature</a>
@@ -145,10 +145,11 @@
 					<h4> Sketch Area </h4>
 					<div class="tools">
 						<a href="#sketchCanvas" data-tool="marker">Marker</a>
-						 <a href="#sketchCanvas" data-tool="eraser">Eraser</a>
-						 <a href="#sketchCanvas" data-download="png" >Download</a>
+						<a href="#sketchCanvas" data-tool="eraser">Eraser</a>
+						<a href="#sketchCanvas" data-download="png" >Download</a>
+						<a id="sketchCanvasClear" class="hidden" href='#sketchCanvas' data-clear='true'>Clear</a>
 					</div>
-					<canvas id="sketchCanvas" height="475" width="925"class="sketchCanvas" />
+					<canvas id="sketchCanvas" height="400" width="925"class="sketchCanvas" />
 				</div>
 			</div>
 		</div>
@@ -308,11 +309,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 	<script src="/static/js/cleverbucket.js"></script>
 	<script src="/static/js/sketch.js"></script>
-	<script type="text/javascript">
-		$(function() {
-			$('#sketchCanvas').sketch();
-		});
-	</script>
 	<script type="text/javascript">
 		$(function() {
 			$.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {

@@ -64,9 +64,9 @@ var start = function() {
 				for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
 					$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
 				}
-				var canvas = document.getElementById('sketchCanvas');
-				canvas.width = 925;
-				canvas.height = 500;
+				var canvas = document.getElementById('sketchCanvas');	
+				$("#sketchCanvasClear").trigger('click');
+				canvas.width = canvas.width;
 				var context = canvas.getContext('2d');
 				var imageObj = new Image();
 				imageObj.onload = function() {
@@ -117,13 +117,19 @@ $(".ideaTab").click(function() {
 			for(var link in detailLinks[selectedIdea+'+'+selectedFeature]) {
 				$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
 			}
+			
 			var canvas = document.getElementById('sketchCanvas');
+			$("#sketchCanvasClear").trigger('click');
+			canvas.width = canvas.width;
 			var context = canvas.getContext('2d');
 			var imageObj = new Image();
+			
+			imageObj.src = detailCanvas[selectedIdea+'+'+selectedFeature];
+			
 			imageObj.onload = function() {
 				context.drawImage(this, 0, 0);
 			};
-			imageObj.src = detailCanvas[selectedIdea+'+'+selectedFeature];
+			
 		}
 		$(this).removeClass("hidden");
 	});
@@ -137,13 +143,15 @@ $(".ideaTab").click(function() {
 			$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
 		}
 		var canvas = document.getElementById('sketchCanvas');
-		//canvas.width = canvas.width;
+		$("#sketchCanvasClear").trigger('click');
+		canvas.width = canvas.width;
 	}
 	$('.ideaCol').addClass('hidden-xs').addClass('hidden-sm');
 	$('.featureCol').removeClass('hidden-xs').removeClass('hidden-sm');
 });
 
 $(".featureTab").click(function() {
+	
 	$("#"+selectedFeature+" .featureTabDeleteButton").addClass("hidden");	
 	$("#"+selectedFeature + " .featureTabSaveButton").addClass("hidden");
 	$("#"+selectedFeature).removeClass("selectedFeature");
@@ -160,7 +168,8 @@ $(".featureTab").click(function() {
 		$('#links').append('<li><a href="'+detailLinks[selectedIdea+'+'+selectedFeature][link][1]+'">'+detailLinks[selectedIdea+'+'+selectedFeature][link][0]+'</a></li>');
 	}
 	var canvas = document.getElementById('sketchCanvas');
-//	canvas.width = canvas.width;
+	$("#sketchCanvasClear").trigger('click');
+	canvas.width = canvas.width;
 	var context = canvas.getContext('2d');
 	var imageObj = new Image();
 	imageObj.onload = function() {
