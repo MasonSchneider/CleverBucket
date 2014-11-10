@@ -230,17 +230,8 @@ $(".save-feature").click(function() {
 
 	detailText[selectedIdea+'+'+selectedFeature] = info;
 	detailCanvas[selectedIdea+'+'+selectedFeature] = image;
-	Date.prototype.yyyymmdd = function() {         
-                                
-        var yyyy = this.getFullYear().toString();                                    
-        var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based         
-        var dd  = this.getDate().toString();             
-                            
-        return yyyy + '-' + (mm[1]?mm:"0"+mm[0]) + '-' + (dd[1]?dd:"0"+dd[0]);
-    };  
-
-	d = new Date();
-	featureDates[selectedIdea+"+"+selectedFeature] = d.yyyymmdd();
+	featureDates[selectedIdea+"+"+selectedFeature] = "Recently";
+	$("#lastEdit").text(featureDates[selectedIdea+"+"+selectedFeature]);
 });
 
 
