@@ -205,6 +205,9 @@ $("#back-btn-feature").click(function() {
 $("#linkForm").submit(function(event) {
 	var title = $("#link-title-input").val();
 	var url = $("#link-url-input").val();
+	if(url.substring(0,7) != "http://"){
+		url = "";
+	}
 	if (url.length > 0 && title.length > 0) {
 		detailLinks[selectedIdea+'+'+selectedFeature].push([title, url]);
 		$('#links').append('<li><a href="'+url+'">'+title+'</a></li>');

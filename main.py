@@ -75,17 +75,21 @@ class InsertIdeaAction(webapp2.RequestHandler):
         	new_idea = Idea(parent=ndb.Key("Entity", "anon"),
         				title=self.request.get("idea-name"))
         else:
-        	new_idea = Idea(parent=ndb.Key("Entity",user.email().lower()),
-        				title=self.request.get("idea-name"))
-        new_idea.put()
+			idea_name = self.request.get("idea-name")
+			if(idea_name != ""):
+				new_idea = Idea(parent=ndb.Key("Entity",user.email().lower()),
+							title=idea_name)
+				new_idea.put()
         self.redirect(self.request.referer)
 
 class InsertFeatureAction(webapp2.RequestHandler):
     def post(self):
         new_feature = [];
-        new_feature = Feature(parent=ndb.Key(urlsafe=self.request.get("idea-key")),
-        				title=self.request.get("feature-name"))
-        new_feature.put()
+        feature_name = self.request.get("feature-name")
+        if(feature_name != ""):
+            new_feature = Feature(parent=ndb.Key(urlsafe=self.request.get("idea-key")),
+							title=feature_name)
+            new_feature.put()
         self.redirect(self.request.referer)
 
 class InsertLinkAction(webapp2.RequestHandler):
