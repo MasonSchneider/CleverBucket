@@ -235,6 +235,19 @@ $(".save-feature").click(function() {
 	detailCanvas[selectedIdea+'+'+selectedFeature] = image;
 	featureDates[selectedIdea+"+"+selectedFeature] = "Recently";
 	$("#lastEdit").text(featureDates[selectedIdea+"+"+selectedFeature]);
+	
+});
+var $rows = $('.ideaTabItem');
+$("#srch-term").keyup(function(){
+		var searchT = $.trim(this.value).toUpperCase();
+		if(searchT === ""){
+		$rows.parent().show();
+		}else{
+			$rows.parent().hide();
+			$rows.filter(function() {
+				console.log($(this).text());
+			return -1 != $(this).text().toUpperCase().indexOf(searchT); }).parent().show();
+		}
 });
 
 

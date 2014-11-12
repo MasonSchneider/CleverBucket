@@ -71,15 +71,15 @@ class InsertIdeaAction(webapp2.RequestHandler):
     def post(self):
         user = users.get_current_user()
         new_idea = [];
+        idea_name = self.request.get("idea-name")
         if not user:
         	new_idea = Idea(parent=ndb.Key("Entity", "anon"),
-        				title=self.request.get("idea-name"))
+        	 		title=idea_name)
         else:
-			idea_name = self.request.get("idea-name")
-			if(idea_name != ""):
-				new_idea = Idea(parent=ndb.Key("Entity",user.email().lower()),
-							title=idea_name)
-				new_idea.put()
+            new_idea = Idea(parent=ndb.Key("Entity",user.email().lower()),
+			    title=idea_name)
+        if(idea_name != ""):
+            new_idea.put()
         self.redirect(self.request.referer)
 
 class InsertFeatureAction(webapp2.RequestHandler):
