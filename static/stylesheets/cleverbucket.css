@@ -33,6 +33,11 @@ body {
 	margin-left: 10px;
 }
 
+#save-button-mobile {
+	margin-top: 15px;
+	margin-left: 10px;
+}
+
 /* Ideas */
 .ideaCol {
 	border-right: 1px solid black;

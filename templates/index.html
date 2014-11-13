@@ -122,7 +122,9 @@
 		<div class="hidden-xs hidden-sm col-md-6 detailCol">
 			<div class="row" >
 				<div id="featureTitle" class="col-md-12" >
-					<a id="back-btn-feature" href="#" class="hidden btn btn-custom pull-left"><i class="glyphicon glyphicon-chevron-left"></i> Features</a><p id="featTitle">Feature</p>
+					<a id="back-btn-feature" href="#" class="hidden btn btn-custom pull-left"><i class="glyphicon glyphicon-chevron-left"></i> Features</a>
+					<a id="save-button-mobile" href="#" class="hidden btn btn-success pull-right save-feature">Save <i class="glyphicon glyphicon-floppy-disk"></i></a>
+					<p id="featTitle">Feature</p>
 				</div>
 			</div>
 			<div class="row featureDetail">
@@ -301,12 +303,12 @@
 		var featureDates = new Object
 		var ideaNames = new Object();
 		{% for idea in ideas %}
+		ideaDates['{{idea[0]}}'] = '{{idea[3]}}';
 		{% set outerIndex = loop.index0 %}
 		{% for feature in idea[2] %}
 		detailText['{{idea[0]}}+{{feature[0]}}'] = '{{ feature[2]|safe }}';
 		detailCanvas['{{idea[0]}}+{{feature[0]}}'] = '{{ feature[4]|safe }}';
 		detailLinks['{{idea[0]}}+{{feature[0]}}'] = [{% for link in feature[3] %}['{{ link[1]|safe }}', '{{ link[0] }}'],{% endfor %}];
-		ideaDates['{{idea[0]}}'] = '{{idea[3]}}';
 		featureDates['{{idea[0]}}+{{feature[0]}}'] = '{{feature[5]}}';
 		{% endfor %}
 		{% endfor %}		

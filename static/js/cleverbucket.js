@@ -41,6 +41,7 @@ var start = function() {
   		// Back button for mobile
   		$("#back-btn-idea").removeClass("hidden");
   		$("#back-btn-feature").removeClass("hidden");
+  		$("#save-button-mobile").removeClass("hidden");
   		$("#idTitle").css('padding-right', '60px');
   		$("#featTitle").css('padding-right', '60px');
 
@@ -48,6 +49,7 @@ var start = function() {
 		// Hide button in web
 		$("#back-btn-idea").addClass("hidden");
   		$("#back-btn-feature").addClass("hidden");
+  		$("#save-button-mobile").addClass("hidden");
   		$("#idTitle").css('padding-right', '0px');
   		$("#featTitle").css('padding-right', '0px');
 
@@ -205,7 +207,7 @@ $("#back-btn-feature").click(function() {
 $("#linkForm").submit(function(event) {
 	var title = $("#link-title-input").val();
 	var url = $("#link-url-input").val();
-	if(url.substring(0,7) != "http://"){
+	if(url.substring(0,7) != "http://" && url.substring(0,8) != "https://"){
 		url = "";
 	}
 	if (url.length > 0 && title.length > 0) {
@@ -237,6 +239,7 @@ $(".save-feature").click(function() {
 	$("#lastEdit").text(featureDates[selectedIdea+"+"+selectedFeature]);
 	
 });
+
 var $rows = $('.ideaTabItem');
 $("#srch-term").keyup(function(){
 		var searchT = $.trim(this.value).toUpperCase();
